@@ -61,6 +61,6 @@ app.get("/search/:query", function(req, res) {
   })
 })
 
-app.listen(8008, function() {
-  console.log("Server started on port 8008");
+app.listen(process.env.PORT || 8008, function() {
+  console.log("Server started.");
 });
