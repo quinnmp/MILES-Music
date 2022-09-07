@@ -1,0 +1,307 @@
+body {
+  background-color: rgb(255, 243, 228);
+}
+
+h1, label {
+  color: rgb(238, 214, 196);
+}
+
+h2 {
+  text-align: center;
+  color: rgb(107, 79, 79);
+  font-size: 25px;
+  position: relative;
+  top: 5px;
+}
+
+td, .td {
+  color: rgb(107, 79, 79);
+}
+
+.track-div {
+  border-radius: 10px;
+}
+
+label {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+p {
+  color: rgb(255, 243, 228);
+}
+
+hr {
+  border: 5px solid rgb(72, 52, 52);
+  opacity: 1;
+}
+
+footer {
+  background-color: rgb(72, 52, 52);
+}
+
+a, h1, h2, h3, h4, h5, h6, p, td, .td, .track-number {
+  font-family: 'Cabin', sans-serif;
+}
+
+a {
+  font-family: 'Cabin', sans-serif;
+  font-size: 25px;
+  transition-duration: 0.2s;
+}
+
+svg {
+  transition-duration: 0.2s;
+}
+
+a, a:link, a:visited {
+  color: rgb(238, 214, 196);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(72, 52, 52);
+}
+
+svg:hover {
+  fill: rgb(72, 52, 52);
+}
+
+html {
+  scroll-padding-top: 100px;
+}
+
+.footer-svg:hover {
+  fill: rgb(107, 79, 79);
+}
+
+.footer-social:hover, .footer-brand:hover, .review {
+  color: rgb(107, 79, 79);
+}
+
+.active a {
+  color: rgb(72, 52, 52);
+  background-color: rgb(238, 214, 196);
+  border-radius: 15px;
+}
+
+.navbar-brand {
+  font-family: 'Righteous', cursive;
+  font-size: 50px;
+}
+
+.nav {
+  --bs-nav-link-hover-color: rgb(107, 79, 79);
+}
+
+.navbar {
+  --bs-navbar-brand-hover-color: rgb(107, 79, 79);
+  background-color: rgb(72, 52, 52);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.contact-form {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 15px;
+  border-color: rgb(72, 52, 52);
+  background-color: rgb(107, 79, 79);
+}
+
+.rym {
+  position: relative;
+  top: 2px;
+}
+
+.submit-btn {
+  border-radius: 6px;
+  transition-duration: 0.2s;
+  border: 5px;
+  border-style: solid;
+  border-color: rgb(72, 52, 52);
+  background-color: rgb(238, 214, 196);
+  color: rgb(107, 79, 79);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.submit-btn:hover {
+  background-color: rgb(107, 79, 79);
+  color: rgb(238, 214, 196);
+}
+
+.footer-brand {
+  font-family: 'Righteous', cursive;
+  font-size: 50px;
+}
+
+.card {
+  transition-duration: 0.2s;
+  border-radius: 6px;
+  border: 5px;
+  border-style: solid;
+  border-color: rgb(72, 52, 52);
+  min-height: 900px;
+}
+
+.card:hover {
+  box-shadow: 0 0 15px rgb(72, 52, 52);
+}
+
+.card-body {
+  background-color: rgb(107, 79, 79);
+}
+
+.card-title, .card-subtitle {
+  color: rgb(238, 214, 196);
+}
+
+.card-title {
+  font-size: 25px;
+}
+
+.card-subtitle {
+  font-size: 20px;
+}
+
+.same {
+  display: inline-block;
+}
+
+.light-hr {
+  border: 3px solid rgb(107, 79, 79);
+}
+
+.card-hr {
+  border: 3px solid rgb(72, 52, 52);
+}
+
+.card-link {
+  color: rgb(238, 214, 196);
+  font-size: 15px;
+}
+
+.read-more, .read-more:link, .read-more:visited, .review-link, .review-link:link, .review-link:visited {
+  text-decoration: underline;
+}
+
+.review-link, .review-link:link, .review-link:visited {
+  color: rgb(107, 79, 79);
+  font-size: 20px;
+}
+
+.track:link, .track:visited {
+  color: rgb(107, 79, 79);
+  text-decoration: underline;
+}
+
+.track {
+  font-size: 20px;
+}
+
+.album-cover {
+  height: 640px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.review-hr {
+  width: 640px;
+  margin: auto;
+}
+
+.album-title, .album-artist, .album-score {
+  text-align: center;
+  color: rgb(72, 52, 52);
+}
+
+.album-title {
+  font-size: 60px;
+}
+
+.album-artist {
+  font-size: 40px;
+}
+
+.album-score {
+  font-size: 90px;
+}
+
+.score-container {
+  border: 16px double rgb(72, 52, 52);
+  width: 228px;
+  height: 228px;
+  text-align: center;
+  margin: auto;
+  border-radius: 45px;
+  padding: 38px;
+}
+
+.review {
+  font-size: 20px;
+  white-space: pre-wrap;
+}
+
+.track-number {
+  text-align: center;
+  font-size: 20px;
+  border: none;
+  width: 50px;
+  color: rgb(107, 79, 79);
+}
+
+.no-bottom-border {
+  border-bottom: none;
+}
+
+.no-top-border {
+  border-top: none;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.red-background, .green-background {
+  border-radius: 10px;
+}
+
+.green-background {
+  background-color: rgb(119, 221, 119);
+}
+
+.badge {
+  margin-left: 2px;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.red-background {
+  background-color: rgb(250, 160, 160);
+}
+
+.badge {
+  border: 3px solid rgb(107, 79, 79);
+  background-color: rgb(238, 214, 196);
+  color:  rgb(107, 79, 79);
+}
+
+.track-hr {
+  border: 2px solid rgb(107, 79, 79);
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.search {
+  width: 50%;
+}
+
+.search-button {
+  position: relative;
+  bottom: 2px;
+}

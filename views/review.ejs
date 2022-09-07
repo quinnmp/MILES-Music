@@ -1,0 +1,95 @@
+<%- include("partials/header"); -%>
+<div class="container">
+  <img src="/images/<%=image%>" class="album-cover mt-5 mb-2">
+  <h1 class="album-title my-2 mx-5"><%=title%></h1>
+  <h2 class="album-artist mt-2 mb-5 mx-5"><%=artist%></h2>
+  <hr class="review-hr my-2" />
+  <p class="review my-5 mx-5 px-5"><%-review%></p>
+  <hr class="review-hr my-2" />
+  <h1 class="album-title my-5 mx-5">Tracklist</h1>
+  <div class="row">
+    <div class="col-6">
+      <div class="my-2 track-div">
+        <% for (let i = 0; i < Math.ceil(tracks.length / 2); i++) { %>
+          <% if (least_fav_tracks.includes(i + 1)) { %>
+          <div class="red-background">
+          <% } else if (fav_tracks.includes(i + 1)) { %>
+          <div class="green-background">
+          <% } else { %>
+          <div>
+          <% } %>
+          <div class="same track-number" id="<%= i + 1 %>"><%=i + 1 + "."%></div>
+          <% if (linked_tracks.includes(i + 1)) { %>
+          <a href="#<%- i + 1 %>-review"
+          <% } else { %>
+          <a
+          <% } %>
+           class="same track td"><%=tracks[i]%></a>
+          </div>
+          <% if (i + 1 !== Math.ceil(tracks.length / 2)) { %>
+          <hr class="track-hr" />
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="my-2 track-div">
+        <% for (let i = 0; i < Math.floor(tracks.length / 2); i++) { %>
+          <% if (least_fav_tracks.includes(i + 1 + Math.ceil(tracks.length / 2))) { %>
+          <div class="red-background">
+          <% } else if (fav_tracks.includes(i + 1 + Math.ceil(tracks.length / 2))) { %>
+          <div class="green-background">
+          <% } else { %>
+          <div>
+          <% } %>
+          <div class="same track-number" id="<%= i + 1 + Math.ceil(tracks.length / 2) %>"><%= i + 1 + Math.ceil(tracks.length / 2) + "."%></div>
+          <% if (linked_tracks.includes(i + 1 + Math.floor(tracks.length / 2))) { %>
+          <a href="#<%- i + 1 %>-review"
+          <% } else { %>
+          <a
+          <% } %>
+           class="same track td"><%=tracks[i + Math.ceil(tracks.length / 2)]%></a>
+          </div>
+          <% if (i + 1 !== Math.floor(tracks.length / 2)) { %>
+          <hr class="track-hr" />
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+  </div>
+  <div class="row my-4 mx-2">
+    <div class="col-6">
+      <p class="review same">Favorite Tracks:</p>
+      <% if (fav_tracks.length === 0) { %>
+        <p class="review same">N/A</p>
+      <% } else { %>
+        <% for (let i = 0; i < fav_tracks.length; i++) { %>
+          <% if (i + 1 === fav_tracks.length) { %>
+            <p class="review same"><%- tracks[fav_tracks[i] - 1] %></p>
+          <% } else { %>
+            <p class="review same"><%- tracks[fav_tracks[i] - 1] %>,</p>
+          <% } %>
+        <% } %>
+      <% } %>
+    </div>
+    <div class="col-6">
+      <p class="review same">Least Favorite Tracks:</p>
+      <% if (least_fav_tracks.length === 0) { %>
+        <p class="review same">N/A</p>
+      <% } else { %>
+        <% for (let i = 0; i < least_fav_tracks.length; i++) { %>
+          <% if (i + 1 === least_fav_tracks.length) { %>
+            <p class="review same"><%- tracks[least_fav_tracks[i] - 1] %></p>
+          <% } else { %>
+            <p class="review same"><%- tracks[least_fav_tracks[i] - 1] %>,</p>
+          <% } %>
+        <% } %>
+      <% } %>
+    </div>
+  </div>
+  <div class="score-container mb-5 mt-5">
+    <h3 class="album-score"><%=score%></h3>
+  </div>
+  </div>
+</div>
+<%- include("partials/footer"); -%>
