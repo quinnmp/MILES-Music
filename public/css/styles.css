@@ -197,7 +197,7 @@ html {
   font-size: 20px;
 }
 
-.track:link, .track:visited {
+.track:link, .track:visited, .track {
   color: rgb(107, 79, 79);
   text-decoration: underline;
   inline-size: 75%;
@@ -260,6 +260,7 @@ html {
 
 .track-number {
   float: left;
+  margin-right: 16px;
   text-align: center;
   font-size: 20px;
   border: none;
