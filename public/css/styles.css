@@ -40,7 +40,7 @@ footer {
   background-color: rgb(72, 52, 52);
 }
 
-a, h1, h2, h3, h4, h5, h6, p, td, .td, .track-number {
+a, button, h1, h2, h3, h4, h5, h6, p, td, .td, .track-number {
   font-family: 'Cabin', sans-serif;
 }
 
@@ -305,7 +305,7 @@ html {
   width: 50%;
 }
 
-.search-button {
+.search-button, .track-wrapper-generation-button {
   position: relative;
   bottom: 2px;
 }
@@ -316,4 +316,8 @@ html {
 
 .review-date {
   font-size: 32px;
+}
+
+.track-number-input {
+  width: 5%;
 }

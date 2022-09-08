@@ -1,0 +1,23 @@
+<%- include("partials/header"); -%>
+<div class="container">
+  <div class="row mt-5 mx-5">
+    <h2 class="same align-left">Track#:
+    <input class="same track-title-input" type="text" name="track-title" value=""></input>
+    <input class="same track-number-input" type="text" name="track-number" value=""></input>
+    <button type="submit" class="submit-btn w-10 track-wrapper-generation-button" name="button">Generate</button>
+    </h2>
+  </div>
+  <div class="row mx-5 mb-5">
+    <input class="same track-output" type="text" name="track-output" value=""></input>
+  </div>
+  <div class="row mx-5 mb-5">
+    <a class="review-link" href="https://developer.spotify.com/console/get-album-tracks/?id=4UG3kz6qoHtNI1glQ2wdon&market=ES&limit=50&offset="><h2>Spotify API to get Tracklist</h2></a>
+    <textarea class="tracklist-text" name="tracklist-text" rows="4" cols="80"></textarea>
+    <button type="submit" class="submit-btn w-10 fix-tracklist-button" name="button">Make Tracklist-able</button>
+  </div>
+  <div class="row m-5">
+    <textarea class="review-text" name="review-text" rows="8" cols="80"></textarea>
+    <button type="submit" class="submit-btn w-10 fix-review-button" name="button">Make Review-able</button>
+  </div>
+</div>
+<%- include("partials/footer"); -%>

@@ -32,6 +32,10 @@ app.post("/contact", function(req, res) {
   res.redirect(`mailto:quinnpfeifer@icloud.com?subject=${req.body.firstName}` + " " + `${req.body.lastName}` + " - " + `${req.body.subject}&body=${req.body.message}`);
 })
 
+app.get("/compose", function(req, res) {
+  res.render("compose");
+})
+
 app.get("/reviews/:reviewName", function(req, res) {
   const requestedTitle = req.params.reviewName.toLowerCase();
 
