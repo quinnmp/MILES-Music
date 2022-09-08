@@ -8,7 +8,9 @@ reviews = [
     tracks: ["Track 1", "Track 2", "Track 3", "Track 4", "Track 5"],
     fav_tracks: [1, 4, 5],
     least_fav_tracks: [3],
-    linked_tracks: [1]
+    linked_tracks: [1],
+    date: "09/04/2022",
+    release_date: "1999"
   },
   {
     title: "Stratosphere",

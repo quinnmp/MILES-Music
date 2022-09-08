@@ -48,7 +48,9 @@ app.get("/reviews/:reviewName", function(req, res) {
         tracks: review.tracks,
         fav_tracks: review.fav_tracks,
         least_fav_tracks: review.least_fav_tracks,
-        linked_tracks: review.linked_tracks
+        linked_tracks: review.linked_tracks,
+        date: review.date,
+        release_date: review.release_date
       });
     }
   });

@@ -2,9 +2,11 @@
 <div class="container">
   <img src="/images/<%=image%>" class="album-cover mt-5 mb-2">
   <h1 class="album-title my-2 mx-5"><%=title%></h1>
-  <h2 class="album-artist mt-2 mb-5 mx-5"><%=artist%></h2>
+  <h2 class="album-artist my-2 mx-5"><%=artist%></h2>
+  <h2 class="album-artist mt-3 mb-5 mx-5 review-date"><em><%=release_date%></em></h2>
   <hr class="review-hr my-2" />
-  <p class="review my-5 mx-5 px-5"><%-review%></p>
+  <p class="review mt-5 mx-5 px-5"><em><%-date%></em></p>
+  <p class="review mb-5 mt-4 mx-5 px-5"><%-review%></p>
   <hr class="review-hr my-2" />
   <h1 class="album-title my-5 mx-5">Tracklist</h1>
   <div class="row">
@@ -20,11 +22,14 @@
           <% } %>
           <div class="same track-number" id="<%= i + 1 %>"><%=i + 1 + "."%></div>
           <% if (linked_tracks.includes(i + 1)) { %>
-          <a href="#<%- i + 1 %>-review"
+          <a href="#<%- i + 1 %>-review" class="same track td"><%=tracks[i]%>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16" transform='rotate(270)'>
+              <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
+            </svg>
           <% } else { %>
-          <a
+          <a class="same track td"><%=tracks[i]%>
           <% } %>
-           class="same track td"><%=tracks[i]%></a>
+          </a>
           </div>
           <% if (i + 1 !== Math.ceil(tracks.length / 2)) { %>
           <hr class="track-hr" />
@@ -44,11 +49,14 @@
           <% } %>
           <div class="same track-number" id="<%= i + 1 + Math.ceil(tracks.length / 2) %>"><%= i + 1 + Math.ceil(tracks.length / 2) + "."%></div>
           <% if (linked_tracks.includes(i + 1 + Math.floor(tracks.length / 2))) { %>
-          <a href="#<%- i + 1 %>-review"
+          <a href="#<%- i + 1 %>-review" class="same track td"><%=tracks[i + Math.ceil(tracks.length / 2)]%>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16" transform='rotate(270)'>
+              <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
+            </svg>
           <% } else { %>
-          <a
+          <a class="same track td"><%=tracks[i + Math.ceil(tracks.length / 2)]%>
           <% } %>
-           class="same track td"><%=tracks[i + Math.ceil(tracks.length / 2)]%></a>
+          </a>
           </div>
           <% if (i + 1 !== Math.floor(tracks.length / 2)) { %>
           <hr class="track-hr" />
