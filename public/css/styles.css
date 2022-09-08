@@ -183,6 +183,10 @@ html {
   font-size: 15px;
 }
 
+.card-img-top {
+  border-radius: 0;
+}
+
 .read-more, .read-more:link, .read-more:visited, .review-link, .review-link:link, .review-link:visited {
   text-decoration: underline;
 }
