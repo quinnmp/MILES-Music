@@ -334,6 +334,10 @@ html {
   width: 100%;
 }
 
+.contact-spacer {
+  height: 186px;
+}
+
 @media (max-width: 992px) {
   .percent-adjustable-h2 {
     width: 30%;
