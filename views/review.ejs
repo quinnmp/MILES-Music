@@ -49,7 +49,7 @@
           <% } %>
           <div class="same track-number" id="<%= i + 1 + Math.ceil(tracks.length / 2) %>"><%= i + 1 + Math.ceil(tracks.length / 2) + "."%></div>
           <% if (linked_tracks.includes(i + 1 + Math.floor(tracks.length / 2))) { %>
-          <a href="#<%- i + 1 %>-review" class="same track td"><%=tracks[i + Math.ceil(tracks.length / 2)]%>
+          <a href="#<%- i + 1 + Math.ceil(tracks.length / 2) %>-review" class="same track td"><%=tracks[i + Math.ceil(tracks.length / 2)]%>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16" transform='rotate(270)'>
               <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
             </svg>
@@ -67,29 +67,29 @@
   </div>
   <div class="row my-4 mx-2">
     <div class="col-6">
-      <p class="review same">Favorite Tracks:</p>
+      <p class="review same mb-0">Favorite Tracks:</p>
       <% if (fav_tracks.length === 0) { %>
         <p class="review same">N/A</p>
       <% } else { %>
         <% for (let i = 0; i < fav_tracks.length; i++) { %>
           <% if (i + 1 === fav_tracks.length) { %>
-            <p class="review same"><%- tracks[fav_tracks[i] - 1] %></p>
+            <p class="review same mb-0"><%- tracks[fav_tracks[i] - 1] %></p>
           <% } else { %>
-            <p class="review same"><%- tracks[fav_tracks[i] - 1] %>,</p>
+            <p class="review same mb-0"><%- tracks[fav_tracks[i] - 1] %>,</p>
           <% } %>
         <% } %>
       <% } %>
     </div>
     <div class="col-6">
-      <p class="review same">Least Favorite Tracks:</p>
+      <p class="review same mb-0">Least Favorite Tracks:</p>
       <% if (least_fav_tracks.length === 0) { %>
         <p class="review same">N/A</p>
       <% } else { %>
         <% for (let i = 0; i < least_fav_tracks.length; i++) { %>
           <% if (i + 1 === least_fav_tracks.length) { %>
-            <p class="review same"><%- tracks[least_fav_tracks[i] - 1] %></p>
+            <p class="review same mb-0"><%- tracks[least_fav_tracks[i] - 1] %></p>
           <% } else { %>
-            <p class="review same"><%- tracks[least_fav_tracks[i] - 1] %>,</p>
+            <p class="review same mb-0"><%- tracks[least_fav_tracks[i] - 1] %>,</p>
           <% } %>
         <% } %>
       <% } %>
