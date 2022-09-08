@@ -1,48 +1,49 @@
 <%- include("partials/header"); -%>
-<div class="row mt-5 mb-2 mx-5 d-flex justify-content-between">
-  <div class="col-5 percent-adjustable-hr">
-    <hr class="light-hr" />
+<div class="container">
+  <div class="row mt-5 mb-2 d-flex justify-content-between">
+    <div class="col-5 percent-adjustable-hr">
+      <hr class="light-hr" />
+    </div>
+    <div class="col-2 percent-adjustable-h2">
+      <h2 class="percent-adjustable-h2-font">RECENT REVIEWS</h2>
+    </div>
+    <div class="col-5 percent-adjustable-hr">
+      <hr class="light-hr" />
+    </div>
   </div>
-  <div class="col-2 percent-adjustable-h2">
-    <h2 class="percent-adjustable-h2-font">RECENT REVIEWS</h2>
-  </div>
-  <div class="col-5 percent-adjustable-hr">
-    <hr class="light-hr" />
-  </div>
-</div>
 
-<div class="row mx-5">
-  <div class="col-lg-6 col-md-12">
-    <h2 class="same align-left full">Search:
-    <input class="same search" type="search" name="search" value="<%=query%>"></input>
-    <button type="submit" class="submit-btn w-10 search-button" name="button">Search</button>
-    </h2>
+  <div class="row">
+    <div class="col-lg-6 col-md-12">
+      <h2 class="same align-left full">Search:
+      <input class="same search" type="search" name="search" value="<%=query%>"></input>
+      <button type="submit" class="submit-btn w-10 search-button" name="button">Search</button>
+      </h2>
+    </div>
   </div>
-</div>
 
-<div class="row mt-3 mb-5 mx-5">
-  <% reviews.forEach(function(review){ %>
-    <% if (query === "" || review.title.toLowerCase().includes(query) || review.artist.toLowerCase().includes(query)){ %>
-    <div class="col-lg-4 col-sm-6">
-      <div class="card my-2">
-        <a href="/reviews/<%=review.title%>">
-          <img src="<%=review.image%>" class="card-img-top">
-        </a>
-        <div class="card-body">
-          <h5 class="card-title"><%=review.title%></h5>
-          <h6 class="card-subtitle"><%=review.artist%></h6>
-          <h6 class="card-subtitle date mt-1"><em><%=review.date%></em></h6>
-          <hr class="card-hr" />
-          <p class="card-link">
-            <%=review.preview + "..."%>
-            <a href="/reviews/<%=review.title%>" class="card-link read-more">Read More</a>
-          </p>
+  <div class="row mt-3 mb-5">
+    <% reviews.forEach(function(review){ %>
+      <% if (query === "" || review.title.toLowerCase().includes(query) || review.artist.toLowerCase().includes(query)){ %>
+      <div class="col-lg-4 col-sm-6">
+        <div class="card my-2">
+          <a href="/reviews/<%=review.title%>">
+            <img src="<%=review.image%>" class="card-img-top">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title"><%=review.title%></h5>
+            <h6 class="card-subtitle"><%=review.artist%></h6>
+            <h6 class="card-subtitle date mt-1"><em><%=review.date%></em></h6>
+            <hr class="card-hr" />
+            <p class="card-link">
+              <%=review.preview + "..."%>
+              <a href="/reviews/<%=review.title%>" class="card-link read-more">Read More</a>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-    <% } %>
-  <% }) %>
-  <h2 class="mt-4 end-notification">You've reached the end of the reviews.</h2>
+      <% } %>
+    <% }) %>
+    <h2 class="mt-4 end-notification">You've reached the end of the reviews.</h2>
+  </div>
 </div>
-
 <%- include("partials/footer"); -%>

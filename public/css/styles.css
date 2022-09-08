@@ -1,5 +1,6 @@
 body {
   background-color: rgb(255, 243, 228);
+  height: 100vh;
 }
 
 h1, label {
@@ -232,6 +233,16 @@ html {
 
 .album-score {
   font-size: 90px;
+}
+
+.push {
+  margin: 0 auto -59px;
+}
+
+.container {
+  min-height: calc(100% - 200px);
+  padding-bottom: 59px;
+  /* max-width: 100%; */
 }
 
 .score-container {
