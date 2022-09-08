@@ -54,3 +54,12 @@ if($(".card").length === 0) {
   console.log($(".card").length);
   $(".end-notification").text("No reviews found.");
 }
+
+$(".make-preview-button").click(function() {
+  let review = $(".preview-text").val();
+  review = review.replaceAll("\"", "\\\"");
+  review = review.replaceAll("\n\n", " ");
+  review = review.replaceAll("\n", " ");
+  review = review.substring(0, 500);
+  $(".preview-text").val(review);
+})
