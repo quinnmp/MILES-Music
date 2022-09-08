@@ -200,10 +200,8 @@ html {
 .track:link, .track:visited {
   color: rgb(107, 79, 79);
   text-decoration: underline;
-}
-
-.track {
-  font-size: 20px;
+  inline-size: 75%;
+  overflow-wrap: break-word;
 }
 
 .album-cover {
@@ -261,6 +259,7 @@ html {
 }
 
 .track-number {
+  float: left;
   text-align: center;
   font-size: 20px;
   border: none;

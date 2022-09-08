@@ -14,11 +14,11 @@
       <div class="my-2 track-div">
         <% for (let i = 0; i < Math.ceil(tracks.length / 2); i++) { %>
           <% if (least_fav_tracks.includes(i + 1)) { %>
-          <div class="red-background">
+          <div class="red-background track-cell">
           <% } else if (fav_tracks.includes(i + 1)) { %>
-          <div class="green-background">
+          <div class="green-background track-cell">
           <% } else { %>
-          <div>
+          <div class="track-cell">
           <% } %>
           <div class="same track-number" id="<%= i + 1 %>"><%=i + 1 + "."%></div>
           <% if (linked_tracks.includes(i + 1)) { %>
