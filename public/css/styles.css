@@ -350,6 +350,18 @@ html {
 }
 
 @media (max-width: 992px) {
+  .review, .track, .track-number, .review-link, .review-link:link, .review-link:visited, .contact-button, label {
+    font-size: 40px;
+  }
+
+  .nav-link, .contact-text {
+    font-size: 32px;
+  }
+
+  .review {
+    padding: 0px!important;
+  }
+
   .percent-adjustable-h2 {
     width: 30%;
   }
