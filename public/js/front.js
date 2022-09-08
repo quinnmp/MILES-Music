@@ -47,3 +47,8 @@ $(".fix-tracklist-button").click(function() {
   }
   $(".tracklist-text").val(JSON.stringify(fixed_tracklist));
 })
+
+if($(".card").length === 0) {
+  console.log($(".card").length);
+  $(".end-notification").text("No reviews found.");
+}
