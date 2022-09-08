@@ -1,12 +1,12 @@
 <%- include("partials/header"); -%>
-<div class="row mt-5 mb-2 mx-5">
-  <div class="col-5">
+<div class="row mt-5 mb-2 mx-5 d-flex justify-content-between">
+  <div class="col-5 percent-adjustable-hr">
     <hr class="light-hr" />
   </div>
-  <div class="col-2">
-    <h2>RECENT REVIEWS</h2>
+  <div class="col-2 percent-adjustable-h2">
+    <h2 class="percent-adjustable-h2-font">RECENT REVIEWS</h2>
   </div>
-  <div class="col-5">
+  <div class="col-5 percent-adjustable-hr">
     <hr class="light-hr" />
   </div>
 </div>
@@ -21,8 +21,8 @@
 <div class="row mt-3 mb-5 mx-5">
   <% reviews.forEach(function(review){ %>
     <% if (query === "" || review.title.toLowerCase().includes(query) || review.artist.toLowerCase().includes(query)){ %>
-    <div class="col-4">
-      <div class="card">
+    <div class="col-lg-4 col-sm-6">
+      <div class="card my-2">
         <a href="/reviews/<%=review.title%>">
           <img src="<%=review.image%>" class="card-img-top">
         </a>
