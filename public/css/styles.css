@@ -86,6 +86,16 @@ html {
   border-radius: 15px;
 }
 
+.timestamp>span>svg {
+  position: relative;
+  bottom: 2px;
+}
+
+.timestamp {
+  padding-left: 5px;
+  padding-top: 7px;
+}
+
 .navbar-brand {
   font-family: 'Righteous', cursive;
   font-size: 50px;
