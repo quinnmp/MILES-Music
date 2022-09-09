@@ -101,7 +101,7 @@ $(".fix-review-button").click(function() {
       last_track_index++;
     }
     track_position = (timestamp_review_array[i - last_track_index].lastIndexOf("a href="));
-    track_number = timestamp_review_array[i - last_track_index].charAt(track_position + 10);
+    track_number = timestamp_review_array[i - last_track_index].substring(track_position + 10, timestamp_review_array[i - last_track_index].indexOf("\\", track_position + 10));
     review = review.replace("{" + timestamp_review_array[i], `<span id=\\"*${track_number}\\" class=\\"badge timestamp ${timestamp_review_array[i].substring(timestamp_review_array[i].indexOf("&") + 1, timestamp_review_array[i].indexOf("}"))}\\"><span class=\\"play\\"></span>${timestamp_review_array[i].substring(0, timestamp_review_array[i].indexOf("&"))}</span>` + timestamp_review_array[i].substring(timestamp_review_array[i].indexOf("}") + 1, timestamp_review_array[i].length));
   }
   $(".review-text").val(review);
