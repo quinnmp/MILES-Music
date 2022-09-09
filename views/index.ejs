@@ -24,7 +24,7 @@
   <div class="row mt-3 mb-5">
     <% reviews.forEach(function(review){ %>
       <% if (query === "" || review.title.toLowerCase().includes(query) || review.artist.toLowerCase().includes(query)){ %>
-      <div class="col-lg-4 col-sm-6">
+      <div class="col-lg-4 col-md-12">
         <div class="card my-2">
           <a href="/reviews/<%=review.title%>">
             <img src="<%=review.image%>" class="card-img-top">
