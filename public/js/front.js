@@ -12,7 +12,7 @@ function onYouTubeIframeAPIReady() {
     width: '1',
     playerVars: {
       listType: 'playlist',
-      list: 'OLAK5uy_mgw0vYRCIP5uZxtsN8aqOt8AUc_Zsj_3s'
+      list: $(".playlist-code").attr("id")
     },
     events: {
       'onReady': onPlayerReady,
@@ -96,6 +96,7 @@ $(".fix-review-button").click(function() {
   console.log(timestamp_review_array)
   for (var i = 1; i < timestamp_review_array.length; i++) {
     last_track_index = 1;
+    console.log(timestamp_review_array[i - last_track_index])
     while (!timestamp_review_array[i - last_track_index].includes("a href=")) {
       last_track_index++;
     }
