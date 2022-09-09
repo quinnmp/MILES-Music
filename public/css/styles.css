@@ -18,6 +18,10 @@ td, .td {
   color: rgb(107, 79, 79);
 }
 
+iframe {
+  z-index: -100;
+}
+
 .track-div {
   border-radius: 10px;
 }
@@ -38,6 +42,7 @@ hr {
 
 footer {
   background-color: rgb(72, 52, 52);
+  z-index: 100;
 }
 
 a, button, h1, h2, h3, h4, h5, h6, p, td, .td, .track-number {
