@@ -8,8 +8,8 @@ let playlist = [];
 var player;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
-    height: '0',
-    width: '0',
+    height: '500',
+    width: '500',
     playerVars: {
       listType: 'playlist',
       list: 'OLAK5uy_mgw0vYRCIP5uZxtsN8aqOt8AUc_Zsj_3s'
@@ -65,7 +65,7 @@ $(".timestamp").click(function() {
   if($(this).children().attr("class") === "play") {
     let duration = parseInt($(this).text().substring(0, $(this).text().indexOf(":")), 10) * 60 + parseInt($(this).text().substring($(this).text().indexOf(":") + 1, $(this).text().length), 10)
     player.loadVideoById({
-      videoId:`${playlist[$(this).attr("id") - 1]}`,
+      videoId:`${playlist[$(this).attr("id").substring(1, $(this).attr("id").length) - 1]}`,
       startSeconds:duration,
       endSeconds:duration + parseInt($(this).attr("class").substring($(this).attr("class").indexOf("timestamp") + 10, $(this).attr("class").length), 10)
     });
@@ -101,7 +101,7 @@ $(".fix-review-button").click(function() {
     }
     track_position = (timestamp_review_array[i - last_track_index].lastIndexOf("a href="));
     track_number = timestamp_review_array[i - last_track_index].charAt(track_position + 10);
-    review = review.replace("{" + timestamp_review_array[i], `<span id=\\"${track_number}\\" class=\\"badge timestamp ${timestamp_review_array[i].substring(timestamp_review_array[i].indexOf("&") + 1, timestamp_review_array[i].indexOf("}"))}\\"><span class=\\"play\\"></span>${timestamp_review_array[i].substring(0, timestamp_review_array[i].indexOf("&"))}</span>` + timestamp_review_array[i].substring(timestamp_review_array[i].indexOf("}") + 1, timestamp_review_array[i].length));
+    review = review.replace("{" + timestamp_review_array[i], `<span id=\\"*${track_number}\\" class=\\"badge timestamp ${timestamp_review_array[i].substring(timestamp_review_array[i].indexOf("&") + 1, timestamp_review_array[i].indexOf("}"))}\\"><span class=\\"play\\"></span>${timestamp_review_array[i].substring(0, timestamp_review_array[i].indexOf("&"))}</span>` + timestamp_review_array[i].substring(timestamp_review_array[i].indexOf("}") + 1, timestamp_review_array[i].length));
   }
   $(".review-text").val(review);
 })
