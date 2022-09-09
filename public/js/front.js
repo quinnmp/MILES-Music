@@ -4,6 +4,7 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 page = window.location.href.split("/")[3];
 let playlist = [];
+var current_timestamp;
 
 var player;
 function onYouTubeIframeAPIReady() {
@@ -28,6 +29,7 @@ function onPlayerReady(event) {
 
 function onPlayerStateChange(event) {
   if(event.data === 1) {
+    $(current_timestamp).children().attr("class", "pause");
     $(".pause-button").css("display", "initial")
   } else if(event.data === 2 || event.data === 0) {
     $(".timestamp").children().attr("class", "play");
@@ -70,7 +72,7 @@ $(".timestamp").click(function() {
       endSeconds:duration + parseInt($(this).attr("class").substring($(this).attr("class").indexOf("timestamp") + 10, $(this).attr("class").length), 10)
     });
     $(".pause").attr("class", "play")
-    $(this).children().attr("class", "pause");
+    current_timestamp = this;
   } else {
     player.pauseVideo();
     $(this).children().attr("class", "play");
