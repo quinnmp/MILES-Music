@@ -1,6 +1,5 @@
 body {
   background-color: rgb(255, 243, 228);
-  height: 100vh;
 }
 
 h1, label {
@@ -256,12 +255,13 @@ html {
 }
 
 .push {
-  margin: 0 auto -59px;
+  margin: 0 auto -110px;
 }
 
 .container {
-  min-height: calc(100% - 200px);
-  padding-bottom: 59px;
+  min-height: calc(100vh - 150px);
+  padding-bottom: 0px;
+  margin-top: 150px;
   /* max-width: 100%; */
 }
 

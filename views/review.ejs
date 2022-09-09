@@ -2,7 +2,7 @@
 <div class="playlist-code" id=<%=playlist%>></div>
 <div class="container">
   <div id="player"></div>
-  <img src="<%=image%>" class="album-cover mt-5 mb-2">
+  <img src="<%=image%>" class="album-cover mb-2">
   <h1 class="album-title my-2 mx-5"><%=title%></h1>
   <h2 class="album-artist my-2 mx-5"><%=artist%></h2>
   <h2 class="album-artist mt-3 mb-5 mx-5 review-date"><em><%=release_date%></em></h2>
@@ -102,4 +102,5 @@
   </div>
   </div>
 </div>
+<button type="button" class="pause-button">Stop all sound</button>
 <%- include("partials/footer"); -%>
