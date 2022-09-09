@@ -108,8 +108,9 @@ html {
 .navbar {
   --bs-navbar-brand-hover-color: rgb(107, 79, 79);
   background-color: rgb(72, 52, 52);
-  position: sticky;
+  position: fixed;
   top: 0;
+  width: 100%;
   z-index: 100;
 }
 
@@ -126,7 +127,7 @@ html {
   top: 2px;
 }
 
-.submit-btn {
+.submit-btn, .pause-button {
   border-radius: 6px;
   transition-duration: 0.2s;
   border: 5px;
@@ -136,6 +137,17 @@ html {
   color: rgb(107, 79, 79);
   font-size: 20px;
   font-weight: 500;
+}
+
+.pause-button {
+  display: none;
+  position: fixed;
+  bottom: 50px;
+  width: 300px;
+  height: 50px;
+  right: calc(50% - 150px);
+  z-index: 100;
+  border-radius: 50px;
 }
 
 .submit-btn:hover {
@@ -391,5 +403,18 @@ html {
   .mobile-review {
     margin-left: 0px!important;
     margin-right: 0px!important;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .pause-button {
+    right: 20%;
+    bottom: 100px;
+    width: 60%;
+    height: 10%;
+    font-size: 75px;
   }
 }
