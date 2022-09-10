@@ -2,6 +2,14 @@
 <div id="player"></div>
 <div class="playlist-code" id=<%=playlist%>></div>
 <div class="container">
+  <div class="z-high checkboxes p-3">
+    <label for="num-checkbox">Track Numbers: </label>
+    <input type="checkbox" name="num-checkbox" class="num-checkbox ms-2" checked><br>
+    <label for="timestamp-checkbox">Timestamps: </label>
+    <input type="checkbox" name="timestamp-checkbox" class="timestamp-checkbox ms-2" checked><br>
+    <label for="timestamp-length-checkbox">Timestamp length: </label>
+    <input type="checkbox" name="timestamp-length-checkbox" class="timestamp-length-checkbox ms-2" !checked>
+  </div>
   <img src="<%=image%>" class="album-cover mb-2">
   <h1 class="album-title my-2 mx-5"><%=title%></h1>
   <h2 class="album-artist my-2 mx-5"><%=artist%></h2>

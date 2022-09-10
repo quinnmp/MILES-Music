@@ -63,6 +63,19 @@ $(".pause-button").click(function() {
   player.pauseVideo();
 })
 
+
+$(".timestamp-length-checkbox").on("input", function() {
+  if($(this).is(":checked")){
+    $(".timestamp").each(function() {
+      $(this).html($(this).html() + ", " + $(this).attr("class").split(" ")[2] + "s")
+    })
+  } else {
+    $(".timestamp").each(function() {
+      $(this).html($(this).html().substring(0, $(this).html().indexOf(",")))
+    })
+  }
+})
+
 $(".timestamp").click(function() {
   if($(this).children().attr("class") === "play") {
     let duration = parseInt($(this).text().substring(0, $(this).text().indexOf(":")), 10) * 60 + parseInt($(this).text().substring($(this).text().indexOf(":") + 1, $(this).text().length), 10)
@@ -76,6 +89,22 @@ $(".timestamp").click(function() {
   } else {
     player.pauseVideo();
     $(this).children().attr("class", "play");
+  }
+})
+
+$(".num-checkbox").on("input", function() {
+  if($(this).is(":checked")){
+    $("span.no-underline").css("display", "inline-block")
+  } else {
+    $("span.no-underline").css("display", "none")
+  }
+})
+
+$(".timestamp-checkbox").on("input", function() {
+  if($(this).is(":checked")){
+    $("span.timestamp").css("display", "inline-block")
+  } else {
+    $("span.timestamp").css("display", "none")
   }
 })
 

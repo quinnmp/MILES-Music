@@ -95,11 +95,6 @@ html {
   bottom: 2px;
 }
 
-.timestamp {
-  padding-left: 5px;
-  padding-top: 7px;
-}
-
 .navbar-brand {
   font-family: 'Righteous', cursive;
   font-size: 50px;
@@ -118,7 +113,7 @@ html {
   z-index: 100;
 }
 
-.contact-form {
+.contact-form, .checkboxes {
   border-radius: 10px;
   border-style: solid;
   border-width: 15px;
@@ -152,6 +147,24 @@ html {
   right: calc(50% - 150px);
   z-index: 100;
   border-radius: 50px;
+}
+
+.z-high {
+  z-index: 100;
+}
+
+.checkboxes {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  border-width: 5px;
+}
+
+.num-checkbox, .timestamp-checkbox, .timestamp-length-checkbox {
+  position: relative;
+  top: 6px;
+  height: 25px;
+  width: 25px;
 }
 
 .submit-btn:hover {
@@ -319,6 +332,12 @@ html {
   margin-left: 2px;
 }
 
+.timestamp {
+  padding-left: 5px;
+  padding-top: 7px;
+  margin-left: 4px;
+}
+
 .align-left {
   text-align: left;
 }
@@ -420,10 +439,19 @@ html {
   }
 
   .pause-button {
-    right: 20%;
-    bottom: 100px;
-    width: 60%;
-    height: 10%;
+    right: 30px;
+    bottom: 30px;
+    width: 45%;
+    height: 244px;
     font-size: 40px;
+  }
+
+  .checkboxes {
+    font-size: 45px;
+  }
+
+  .num-checkbox, .timestamp-checkbox, .timestamp-length-checkbox {
+    height: 50px;
+    width: 50px;
   }
 }
