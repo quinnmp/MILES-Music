@@ -433,6 +433,7 @@ html {
 
   .submit-btn {
     font-size: 45px;
+    /* max-width: 75%; */
   }
 
   .search {
@@ -485,7 +486,11 @@ html {
   }
 
   .checkboxes {
-    font-size: 45px;
+    max-width: 45%;
+  }
+
+  .checkboxes>label {
+    font-size: 35px!important;
   }
 
   .num-checkbox, .timestamp-checkbox, .timestamp-length-checkbox {
