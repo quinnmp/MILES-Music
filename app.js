@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 let composePassword = "";
-let reviews = [];
+let reviews_array = [];
 
 mongoose.connect(`mongodb+srv://miles:${process.env.DB_PASSWORD}@reviewscluster.pnyfsg6.mongodb.net/reviewsDB`)
 
@@ -31,8 +31,8 @@ Review.find(function(e, reviews){
   if (e) {
     console.log(e)
   } else {
-    this.reviews = reviews;
-    this.reviews = this.reviews.sort(function(a, b) {
+    reviews_array = reviews;
+    reviews_array = reviews_array.sort(function(a, b) {
       return dateToDays(b.date)-dateToDays(a.date);
     })
   }
@@ -44,7 +44,7 @@ app.use(express.static("public"));
 
 app.get("/", function(req, res) {
   res.render("index", {
-    reviews: reviews,
+    reviews: reviews_array,
     query: ""
   });
 });
@@ -55,7 +55,7 @@ app.post("/", function(req, res) {
 
 app.get("/search/", function(req, res) {
   res.render("index", {
-    reviews: reviews,
+    reviews: reviews_array,
     query: ""
   });
 });
