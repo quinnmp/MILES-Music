@@ -110,7 +110,7 @@ app.post("/compose", function(req, res) {
 app.get("/reviews/:reviewName", function(req, res) {
   const requestedTitle = req.params.reviewName.toLowerCase();
 
-  reviews.forEach(function(review) {
+  reviews_array.forEach(function(review) {
     const reviewTitle = review.title.toLowerCase();
 
     if (reviewTitle === requestedTitle) {
