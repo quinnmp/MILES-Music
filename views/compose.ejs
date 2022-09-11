@@ -1,28 +1,43 @@
 <%- include("partials/header"); -%>
 <div class="container">
-  <div class="row mt-5 mx-5">
-    <h2 class="same align-left">Track#:
-    <input class="same track-title-input" type="text" name="track-title" value=""></input>
-    <input class="same track-number-input" type="text" name="track-number" value=""></input>
-    <button type="submit" class="submit-btn w-10 track-wrapper-generation-button" name="button">Generate</button>
-    </h2>
-  </div>
-  <div class="row mx-5 mb-5">
-    <input class="same track-output" type="text" name="track-output" value=""></input>
-  </div>
-  <div class="row mx-5 mb-5">
-    <a class="review-link" href="https://developer.spotify.com/console/get-album-tracks/?id=4UG3kz6qoHtNI1glQ2wdon&market=ES&limit=50&offset="><h2>Spotify API to get Tracklist</h2></a>
-    <textarea class="tracklist-text" name="tracklist-text" rows="4" cols="80"></textarea>
-    <button type="submit" class="submit-btn w-10 fix-tracklist-button" name="button">Make Tracklist-able</button>
-  </div>
-  <div class="row m-5">
-    <div id="editor"></div>
-    <textarea class="review-text" name="review-text" rows="8" cols="80"></textarea>
-    <button type="submit" class="submit-btn w-10 fix-review-button" name="button">Make Review-able</button>
-  </div>
-  <div class="row m-5">
-    <textarea class="preview-text" name="preview-text" rows="5" cols="80"></textarea>
-    <button type="submit" class="submit-btn w-10 make-preview-button" name="button">Make Preview-able</button>
-  </div>
+  <form action="/compose" method="post">
+    <div class="row mt-5 mx-5">
+      <h2 class="same align-left">Track#:
+      <input class="same track-title-input" type="text" name="track-title" value=""></input>
+      <input class="same track-number-input" type="text" name="track-number" value=""></input>
+      <span class="submit-btn w-10 track-wrapper-generation-button px-2" name="button">Generate</span>
+      </h2>
+    </div>
+    <div class="row mx-5 mb-5">
+      <input class="same track-output" type="text" name="track-output" value=""></input>
+    </div>
+    <div class="row mx-5 mb-5">
+      <a class="review-link" href="https://developer.spotify.com/console/get-album-tracks/?id=4UG3kz6qoHtNI1glQ2wdon&market=ES&limit=50&offset="><h2>Spotify API to get Tracklist</h2></a>
+      <textarea class="tracklist-text" name="tracklist_text" rows="4" cols="80"></textarea>
+      <span class="submit-btn w-10 fix-tracklist-button px-2" name="button">Make Tracklist-able</span>
+    </div>
+    <div class="row m-5">
+      <div id="editor"></div>
+      <textarea class="review-text" name="review_text" rows="8" cols="80"></textarea>
+      <span class="submit-btn w-10 fix-review-button px-2" name="button">Make Review-able</span>
+    </div>
+    <div class="row m-5">
+      <textarea class="preview-text" name="preview_text" rows="5" cols="80"></textarea>
+      <span class="submit-btn w-10 make-preview-button px-2" name="button">Make Preview-able</span>
+    </div>
+    <div class="row m-5">
+      <input class="same my-2" type="text" name="album_title" placeholder="Album Title"></input>
+      <input class="same my-2" type="text" name="artist" placeholder="Artist"></input>
+      <input class="same my-2" type="text" name="image_url" placeholder="Image URL"></input>
+      <input class="same my-2" type="text" name="score" placeholder="Score"></input>
+      <input class="same my-2" type="text" name="fav_tracks" placeholder="Favorite Tracks"></input>
+      <input class="same my-2" type="text" name="least_fav_tracks" placeholder="Least favorite Tracks"></input>
+      <input class="same my-2" type="text" name="linked_tracks" placeholder="Linked Tracks"></input>
+      <input class="same my-2" type="text" name="review_date" placeholder="Review date"></input>
+      <input class="same my-2" type="text" name="release_year" placeholder="Release year"></input>
+      <input class="same my-2" type="text" name="playlist_id" placeholder="Playlist ID"></input>
+      <input type="submit" class="submit-btn mt-2" name="button"></input>
+    </div>
+  </form>
 </div>
 <%- include("partials/footer"); -%>

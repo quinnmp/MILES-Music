@@ -3,7 +3,10 @@ const express = require("express");
 const ejs = require("ejs");
 const app = express();
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+
+let composePassword = "";
+let reviews = [];
 
 mongoose.connect(`mongodb+srv://miles:${process.env.DB_PASSWORD}@reviewscluster.pnyfsg6.mongodb.net/reviewsDB`)
 
@@ -24,13 +27,14 @@ const reviewSchema = new mongoose.Schema ({
 });
 
 const Review = mongoose.model("Review", reviewSchema);
-
-reviews = []
 Review.find(function(e, reviews){
   if (e) {
     console.log(e)
   } else {
     this.reviews = reviews;
+    this.reviews = this.reviews.sort(function(a, b) {
+      return dateToDays(b.date)-dateToDays(a.date);
+    })
   }
 })
 
@@ -46,7 +50,6 @@ app.get("/", function(req, res) {
 });
 
 app.post("/", function(req, res) {
-  console.log(req);
   res.redirect(`/search/${req.body.search}`)
 });
 
@@ -65,20 +68,43 @@ app.post("/contact", function(req, res) {
   res.redirect(`mailto:quinnpfeifer@icloud.com?subject=${req.body.firstName}` + " " + `${req.body.lastName}` + " - " + `${req.body.subject}&body=${req.body.message}`);
 })
 
-app.get("/compose", function(req, res) {
+app.get("/compose/auth", function(req, res) {
   res.render("compose-auth");
 })
 
-app.post("/compose", function(req, res) {
-  if(req.body.password == process.env.COMP_PASSWORD) {
-    res.redirect("/compose/approved")
+app.post("/compose/auth", function(req, res) {
+  composePassword = req.body.password;
+  res.redirect("/compose")
+})
+
+app.get("/compose", function(req, res) {
+  if(composePassword == process.env.COMP_PASSWORD) {
+    res.render("compose")
   } else {
-    res.render("compose-auth");
+    res.redirect("/compose/auth")
   }
 })
 
-app.get("/compose/approved", function(req, res) {
-  res.render("compose");
+app.post("/compose", function(req, res) {
+  const review = new Review ({
+    title: req.body.album_title,
+    artist: req.body.artist,
+    image: req.body.image_url,
+    review: req.body.review_text,
+    score: req.body.score,
+    tracks: JSON.parse(req.body.tracklist_text),
+    fav_tracks: JSON.parse("[" + req.body.fav_tracks + "]"),
+    least_fav_tracks: JSON.parse("[" + req.body.least_fav_tracks + "]"),
+    linked_tracks: JSON.parse("[" + req.body.linked_tracks + "]"),
+    date: req.body.review_date,
+    release_date: req.body.release_year,
+    preview: req.body.preview_text,
+    playlist: req.body.playlis_id
+  })
+
+  review.save();
+
+  res.redirect("/");
 })
 
 app.get("/reviews/:reviewName", function(req, res) {
@@ -116,3 +142,12 @@ app.get("/search/:query", function(req, res) {
 app.listen(process.env.PORT || 8008, function() {
   console.log("Server started.");
 });
+
+function dateToDays(date) {
+  let days = 0;
+  dateArray = date.split("/");
+  days += parseInt(dateArray[0] * 30.4167, 10);
+  days += parseInt(dateArray[1], 10);
+  days += parseInt(dateArray[2] * 365.25, 10);
+  return days;
+}

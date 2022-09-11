@@ -57,7 +57,6 @@ $(".play").html("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\
 
 $(".track-wrapper-generation-button").click(function() {
   $(".track-output").val(`<a href="#${$(".track-number-input").val()}" class="review-link">"${$(".track-title-input").val()}"<span class="badge no-underline" id="${$(".track-number-input").val()}-review"\>${$(".track-number-input").val()}</span></a>`)
-  player.playVideo();
 })
 
 $(".pause-button").click(function() {

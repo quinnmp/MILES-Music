@@ -426,6 +426,10 @@ html {
   top: 1px;
 }
 
+span.submit-btn {
+  text-align: center;
+}
+
 @media (max-width: 992px) {
   .contact-button, label, .card-title {
     font-size: 55px;
