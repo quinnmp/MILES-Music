@@ -1,10 +1,38 @@
+require("dotenv").config();
 const express = require("express");
 const ejs = require("ejs");
 const app = express();
-const reviews = require('./public/reviews/reviews.js');
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose")
 
-const testNum = 5;
+mongoose.connect(`mongodb+srv://miles:${process.env.DB_PASSWORD}@reviewscluster.pnyfsg6.mongodb.net/reviewsDB`)
+
+const reviewSchema = new mongoose.Schema ({
+  title: String,
+  artist: String,
+  image: String,
+  review: String,
+  score: String,
+  tracks: [String],
+  fav_tracks: [Number],
+  least_fav_tracks: [Number],
+  linked_tracks: [Number],
+  date: String,
+  release_date: String,
+  preview: String,
+  playlist: String
+});
+
+const Review = mongoose.model("Review", reviewSchema);
+
+reviews = []
+Review.find(function(e, reviews){
+  if (e) {
+    console.log(e)
+  } else {
+    this.reviews = reviews;
+  }
+})
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
