@@ -134,7 +134,7 @@ app.get("/reviews/:reviewName", function(req, res) {
 
 app.get("/search/:query", function(req, res) {
   res.render("index", {
-    reviews: reviews,
+    reviews: reviews_array,
     query: req.params.query.toLowerCase()
   })
 })
