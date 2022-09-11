@@ -45,8 +45,8 @@ function onPlayerStateChange(event) {
   console.log(event.data)
 }
 
-if (page !== "") {
-  if (window.location.href.split("/")[3] != "reviews") {
+if (page !== "" && window.location.href.split("/")[3] !== "search") {
+  if (window.location.href.split("/")[3] !== "reviews") {
     $("." + `${page}`).attr("class", "nav-item " + `${page}` + " active");
   }
 } else {
