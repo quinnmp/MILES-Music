@@ -55,7 +55,7 @@ a {
   transition-duration: 0.2s;
 }
 
-svg {
+svg, .badge {
   transition-duration: 0.2s;
 }
 
@@ -188,6 +188,10 @@ html {
 
 .card:hover {
   box-shadow: 0 0 25px rgb(72, 52, 52);
+}
+
+.badge:hover{
+  box-shadow: 0 0 10px rgb(72, 52, 52);
 }
 
 .card-body {
@@ -329,13 +333,15 @@ html {
 }
 
 .badge {
-  margin-left: 2px;
+  margin-left: 8px;
 }
 
 .timestamp {
-  padding-left: 5px;
+  position: relative;
+  top: 1px;
+  padding-left: 8px;
   padding-top: 7px;
-  margin-left: 4px;
+  margin-left: 8px;
 }
 
 .align-left {
@@ -359,7 +365,7 @@ html {
 }
 
 .search {
-  width: 50%;
+  width: 75%;
 }
 
 .search-button, .track-wrapper-generation-button {
@@ -396,16 +402,16 @@ html {
 }
 
 @media (max-width: 992px) {
-  .review, .track, .track-number, .review-link, .review-link:link, .review-link:visited, .contact-button, label, .card-title {
-    font-size: 40px;
+  .contact-button, label, .card-title {
+    font-size: 55px;
   }
 
-  .nav-link, .contact-text, .card-subtitle {
-    font-size: 32px;
+  .nav-link, .contact-text, .card-subtitle, .review, .track, .track-number, .review-link, .review-link:link, .review-link:visited, input, textarea {
+    font-size: 42px!important;
   }
 
   .date, .card-link {
-    font-size: 25px;
+    font-size: 32px!important;
   }
 
   .review {
@@ -416,26 +422,58 @@ html {
     width: 30%;
   }
 
+  .light-hr {
+    position: relative;
+    top: 45px;
+  }
+
+  h2 {
+    font-size: 52px;
+  }
+
+  .submit-btn {
+    font-size: 45px;
+  }
+
+  .search {
+    width: 75%;
+  }
+
   .percent-adjustable-hr {
     width: 30%;
   }
 
   .percent-adjustable-h2-font {
-    font-size: 20px;
+    font-size: 50px;
+    left: -7px;
   }
 
   .card {
     min-height: 0px;
   }
 
-  .mobile-review {
-    margin-left: 0px!important;
-    margin-right: 0px!important;
+  .mobile-review, .tracklist-div, .cards-div {
+    margin-left: -75px!important;
+    margin-right: -75px!important;
   }
 
   svg {
     width: 32px;
     height: 32px;
+  }
+
+  .footer-svg {
+    width: 64px;
+    height: 64px;
+  }
+
+  .nav-link {
+    font-size: 45px;
+  }
+
+  .rym {
+    top: 8px;
+    font-size: 40px;
   }
 
   .pause-button {
@@ -453,5 +491,22 @@ html {
   .num-checkbox, .timestamp-checkbox, .timestamp-length-checkbox {
     height: 50px;
     width: 50px;
+  }
+
+  .timestamp {
+    top: -3px;
+    padding-top: 13px;
+  }
+
+  .timestamp>span>svg {
+    bottom: 3px;
+  }
+
+  .badge {
+    margin-left: 16px!important;
+  }
+
+  .card-body {
+    padding: 32px;
   }
 }
