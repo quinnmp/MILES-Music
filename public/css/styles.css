@@ -401,6 +401,22 @@ html {
   height: 186px;
 }
 
+#editor, .ql-toolbar {
+  background-color: white;
+}
+
+.ql-editor>p {
+  color: black;
+}
+
+.ql-editor {
+  padding-left: 0;
+}
+
+#editor {
+  height: 100px;
+}
+
 @media (max-width: 992px) {
   .contact-button, label, .card-title {
     font-size: 55px;

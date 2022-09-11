@@ -6,6 +6,11 @@ page = window.location.href.split("/")[3];
 let playlist = [];
 var current_timestamp;
 
+var quill = new Quill("#editor", {
+  theme: "snow",
+  placeholder: "Enter Unformatted Review"
+});
+
 var player;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
@@ -109,9 +114,20 @@ $(".timestamp-checkbox").on("input", function() {
 })
 
 $(".fix-review-button").click(function() {
-  let review = $(".review-text").val();
+  let review = $(".ql-editor").html();
+  console.log(review);
+  review = review.replaceAll("<span style=\"background-color: transparent; color: rgb(0, 0, 0);\">", "");
+  review = review.replaceAll("&nbsp;", "");
+  review = review.replaceAll("</span>", "");
+  review = review.replaceAll("<p>", "");
+  review = review.replaceAll("</p>", "\\n");
+  review = review.replaceAll("<br>", "");
+  review = review.replaceAll("&amp;", "&");
+  review = review.replaceAll("<em style=\"background-color: transparent; color: rgb(0, 0, 0);\">", "<em>");
   review = review.replaceAll("\"", "\\\"");
   review = review.replaceAll("\n", "\\n");
+  review = review.substring(0, review.length - 4)
+  console.log(review);
   let tracklist = JSON.parse($(".tracklist-text").val())
   for (var i = 0; i < tracklist.length; i++) {
     if (review.includes("\\\"" + tracklist[i].replaceAll("\"", "\\\"") + "\\\"")) {
@@ -124,10 +140,8 @@ $(".fix-review-button").click(function() {
   let timestamp_review_array = review.split("{")
   let track_position = 0;
   let last_track_index = 1;
-  console.log(timestamp_review_array)
   for (var i = 1; i < timestamp_review_array.length; i++) {
     last_track_index = 1;
-    console.log(timestamp_review_array[i - last_track_index])
     while (!timestamp_review_array[i - last_track_index].includes("a href=")) {
       last_track_index++;
     }
