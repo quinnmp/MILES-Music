@@ -45,6 +45,11 @@ app.get("/", function(req, res) {
   });
 });
 
+app.post("/", function(req, res) {
+  console.log(req);
+  res.redirect(`/search/${req.body.search}`)
+});
+
 app.get("/search/", function(req, res) {
   res.render("index", {
     reviews: reviews,
@@ -61,6 +66,18 @@ app.post("/contact", function(req, res) {
 })
 
 app.get("/compose", function(req, res) {
+  res.render("compose-auth");
+})
+
+app.post("/compose", function(req, res) {
+  if(req.body.password == process.env.COMP_PASSWORD) {
+    res.redirect("/compose/approved")
+  } else {
+    res.render("compose-auth");
+  }
+})
+
+app.get("/compose/approved", function(req, res) {
   res.render("compose");
 })
 

@@ -417,6 +417,15 @@ html {
   height: 100px;
 }
 
+.password-div {
+  margin-right: 35%;
+  margin-left: 35%;
+}
+
+.password-div>button {
+  top: 1px;
+}
+
 @media (max-width: 992px) {
   .contact-button, label, .card-title {
     font-size: 55px;

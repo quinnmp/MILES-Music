@@ -15,8 +15,10 @@
   <div class="row">
     <div class="col-lg-6 col-md-12">
       <h2 class="same align-left full">
-      <input class="same search" type="search" name="search" value="<%=query%>" placeholder="Find artists & albums"></input>
-      <button type="submit" class="submit-btn w-10 search-button" name="button">Search</button>
+      <form action="/" method="post">
+        <input class="same search" type="search" name="search" value="<%=query%>" placeholder="Find artists & albums"></input>
+        <button type="submit" class="submit-btn w-10 search-button" name="button">Search</button>
+      </form>
       </h2>
     </div>
   </div>
