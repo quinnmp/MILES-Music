@@ -1,6 +1,8 @@
 <%- include("partials/header"); -%>
 <div class="container">
   <form action="/compose" method="post">
+    <a class="review-link" href="https://cloud.mongodb.com/v2/62dd9977392a7e3b8ca96d11#metrics/replicaSet/631e341a87ac570922bcbe6b/explorer/reviewsDB/reviews/find"><h2>Mongo Atlas</h2></a>
+    <a class="review-link" href="https://dashboard.heroku.com/apps/miles-music-website/deploy/github"><h2>Heroku</h2></a>
     <div class="row mt-5 mx-5">
       <h2 class="same align-left">Track#:
       <input class="same track-title-input" type="text" name="track-title" value=""></input>
@@ -12,7 +14,7 @@
       <input class="same track-output" type="text" name="track-output" value=""></input>
     </div>
     <div class="row mx-5 mb-5">
-      <a class="review-link" href="https://developer.spotify.com/console/get-album-tracks/?id=4UG3kz6qoHtNI1glQ2wdon&market=ES&limit=50&offset="><h2>Spotify API to get Tracklist</h2></a>
+      <a class="review-link" href="https://developer.spotify.com/console/get-album/?market=ES"><h2>Spotify API to get Tracklist</h2></a>
       <textarea class="tracklist-text" name="tracklist_text" rows="4" cols="80"></textarea>
       <span class="submit-btn w-10 fix-tracklist-button px-2" name="button">Make Tracklist-able</span>
     </div>

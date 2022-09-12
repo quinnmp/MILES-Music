@@ -29,7 +29,6 @@ function onYouTubeIframeAPIReady() {
 
 function onPlayerReady(event) {
   playlist = player.getPlaylist();
-  console.log(playlist);
 }
 
 function onPlayerStateChange(event) {
@@ -62,7 +61,6 @@ $(".track-wrapper-generation-button").click(function() {
 $(".pause-button").click(function() {
   player.pauseVideo();
 })
-
 
 $(".timestamp-length-checkbox").on("input", function() {
   if($(this).is(":checked")){
@@ -110,8 +108,8 @@ $(".timestamp-checkbox").on("input", function() {
 
 $(".fix-review-button").click(function() {
   let review = $(".ql-editor").html();
-  console.log(review);
   review = review.replaceAll("<span style=\"background-color: transparent; color: rgb(0, 0, 0);\">", "");
+  review = review.replaceAll("<span style=\"background-color: transparent;\">", "");
   review = review.replaceAll("&nbsp;", "");
   review = review.replaceAll("</span>", "");
   review = review.replaceAll("<p>", "");
@@ -119,19 +117,23 @@ $(".fix-review-button").click(function() {
   review = review.replaceAll("<br>", "");
   review = review.replaceAll("&amp;", "&");
   review = review.replaceAll("<em style=\"background-color: transparent; color: rgb(0, 0, 0);\">", "<em>");
+  review = review.replaceAll("<em style=\"background-color: transparent;\">", "<em>");
   review = review.replaceAll("\"", "\\\"");
   review = review.replaceAll("\n", "\\n");
   review = review.substring(0, review.length - 4)
-  console.log(review);
+  preview = review.substring(0, 500);
+  $(".preview-text").val(preview);
   let tracklist = JSON.parse($(".tracklist-text").val())
   for (var i = 0; i < tracklist.length; i++) {
     if (review.includes("\\\"" + tracklist[i].replaceAll("\"", "\\\"") + "\\\"")) {
+      $("input[name='linked_tracks']").val($("input[name='linked_tracks']").val() + (i + 1) + ", ");
       review = review.replace(
         "\\\"" + tracklist[i].replaceAll("\"", "\\\"") + "\\\"",
         `<a href=\\"#${i + 1}\\" class=\\"review-link\\">\\"${tracklist[i].replaceAll("\"", "\\\"")}\\"<span class=\\"badge no-underline\\" id=\\"${i + 1}-review\\"\\>${i + 1}</span></a>`
       )
     }
   }
+  $("input[name='linked_tracks']").val($("input[name='linked_tracks']").val().substring(0, $("input[name='linked_tracks']").val().length - 2));
   let timestamp_review_array = review.split("{")
   let track_position = 0;
   let last_track_index = 1;
@@ -148,11 +150,28 @@ $(".fix-review-button").click(function() {
 })
 
 $(".fix-tracklist-button").click(function() {
+  let d = new Date();
+  $("input[name='review_date']").val(d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear())
+
   let tracklist = $(".tracklist-text").val().split(" \"");
   let fixed_tracklist = [];
   for (var i = 0; i < tracklist.length; i++) {
-    if (tracklist[i] === "is_playable\": true,\n     ") {
-      fixed_tracklist.push(tracklist[i + 2].substring(0, tracklist[i + 2].length - 8))
+    if(tracklist[i] === "name\":" && $("input[name='artist']").val() === ""){
+      $("input[name='artist']").val(tracklist[i + 1].substring(0, tracklist[i + 1].length - 8));
+    } else if(tracklist[i] === "name\":" && $("input[name='album_title']").val() === "") {
+      $("input[name='album_title']").val(tracklist[i + 1].substring(0, tracklist[i + 1].length - 4));
+    }
+
+    if(tracklist[i] === "height\": 640,\n     "){
+      $("input[name='image_url']").val(tracklist[i + 2].substring(0, tracklist[i + 2].length - 8));
+    }
+
+    if(tracklist[i] === "release_date\":"){
+      $("input[name='release_year']").val(tracklist[i + 1].substring(0, 4));
+    }
+
+    if (tracklist[i].includes("preview_url\":")) {
+      fixed_tracklist.push(tracklist[i - 1].substring(0, tracklist[i - 1].length - 10))
     }
   }
   for (var i = 0; i < fixed_tracklist.length; i++) {
