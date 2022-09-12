@@ -485,12 +485,12 @@ span.submit-btn {
   .submit-btn {
     font-size: 45px!important;
     height: 75px!important;
-    max-width: 25%;
-    width: 164px;
+    max-width: 35%;
+    width: 225px;
   }
 
   .search, select {
-    width: 70%!important;
+    width: 60%!important;
     height: 72px!important;
     align-items: center;
   }
