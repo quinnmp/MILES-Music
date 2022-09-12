@@ -1,4 +1,5 @@
 <%- include("partials/header"); -%>
+<div class="sort-mode" id=<%=sort%>></div>
 <div class="container">
   <div class="row mt-5 mb-2 d-flex justify-content-between">
     <div class="col-5 percent-adjustable-hr">
@@ -12,38 +13,52 @@
     </div>
   </div>
 
+  <form action="/" method="post">
   <div class="row">
-    <div class="col-lg-6 col-md-12">
-      <h2 class="same align-left full">
-      <form action="/" method="post">
-        <input class="same search" type="search" name="search" value="<%=query%>" placeholder="Find artists & albums"></input>
-        <button type="submit" class="submit-btn w-10 search-button" name="button">Search</button>
-      </form>
-      </h2>
-    </div>
+      <div class="col-lg-6 col-md-12 same">
+        <h2>
+          <input class="same search" type="search" name="search" value="<%=query%>" placeholder=" &#x1F50E;&#xFE0E; Find artists & albums"></input>
+          <button type="submit" class="submit-btn w-10 search-button" name="button">Search</button>
+        </h2>
+      </div>
+      <div class="col-lg-6 col-md-12 same">
+        <h2>
+        <select class="form-select same" name="sort">
+          <option selected>Sort By:</option>
+          <option value="1">Date posted (descending)</option>
+          <option value="2">Date posted (ascending)</option>
+          <option value="3">Score (descending)</option>
+          <option value="4">Score (ascending)</option>
+          <option value="5">Album year (descending)</option>
+          <option value="6">Album year (ascending)</option>
+        </select>
+        <button type="submit" class="submit-btn w-10 search-button same update" name="button">Update</button>
+        </h2>
+      </div>
   </div>
+</form>
 
   <div class="row mt-3 mb-5 cards-div">
     <% reviews.forEach(function(review){ %>
-      <% if (query === "" || review.title.toLowerCase().includes(query) || review.artist.toLowerCase().includes(query)){ %>
-      <div class="col-lg-4 col-md-12">
-        <div class="card my-2">
-          <a href="/reviews/<%=review.title%>">
-            <img src="<%=review.image%>" class="card-img-top">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title"><%=review.title%></h5>
-            <h6 class="card-subtitle"><%=review.artist%></h6>
-            <h6 class="card-subtitle date mt-1"><em><%=review.date%></em></h6>
-            <hr class="card-hr" />
-            <p class="card-link">
-              <%=review.preview + "..."%>
-              <a href="/reviews/<%=review.title%>" class="card-link read-more">Read More</a>
-            </p>
-          </div>
+    <% if (query === "" || review.title.toLowerCase().includes(query) || review.artist.toLowerCase().includes(query)){ %>
+    <div class="col-lg-4 col-md-12">
+      <div class="card my-2">
+        <a href="/reviews/<%=review.title%>">
+          <img src="<%=review.image%>" class="card-img-top">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title"><%=review.title%></h5>
+          <h6 class="card-subtitle"><%=review.artist%></h6>
+          <h6 class="card-subtitle date mt-1"><em><%=review.date%></em></h6>
+          <hr class="card-hr" />
+          <p class="card-link">
+            <%=review.preview + "..."%>
+            <a href="/reviews/<%=review.title%>" class="card-link read-more">Read More</a>
+          </p>
         </div>
       </div>
-      <% } %>
+    </div>
+    <% } %>
     <% }) %>
     <h2 class="mt-4 end-notification">You've reached the end of the reviews.</h2>
   </div>

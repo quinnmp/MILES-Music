@@ -44,6 +44,8 @@ function onPlayerStateChange(event) {
   console.log(event.data)
 }
 
+$("select").val($(".sort-mode").attr("id"));
+
 if (page !== "" && window.location.href.split("/")[3] !== "search") {
   if (window.location.href.split("/")[3] !== "reviews") {
     $("." + `${page}`).attr("class", "nav-item " + `${page}` + " active");

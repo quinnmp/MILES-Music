@@ -32,9 +32,6 @@ Review.find(function(e, reviews){
     console.log(e)
   } else {
     reviews_array = reviews;
-    reviews_array = reviews_array.sort(function(a, b) {
-      return dateToDays(b.date)-dateToDays(a.date);
-    })
   }
 })
 
@@ -43,21 +40,22 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 app.get("/", function(req, res) {
+  reviews_array = reviews_array.sort(function(a, b) {
+    return dateToDays(b.date)-dateToDays(a.date);
+  })
   res.render("index", {
     reviews: reviews_array,
-    query: ""
+    query: "",
+    sort: 1
   });
 });
 
 app.post("/", function(req, res) {
-  res.redirect(`/search/${req.body.search}`)
-});
-
-app.get("/search/", function(req, res) {
-  res.render("index", {
-    reviews: reviews_array,
-    query: ""
-  });
+  let search = req.body.search;
+  if(search === "") {
+    search = ":all";
+  }
+  res.redirect(`/search/${search}/${req.body.sort}`)
 });
 
 app.get("/contact", function(req, res) {
@@ -132,10 +130,48 @@ app.get("/reviews/:reviewName", function(req, res) {
   });
 });
 
-app.get("/search/:query", function(req, res) {
+app.get("/search/:query/:sort", function(req, res) {
+  let query = req.params.query.toLowerCase();
+  if (query === ":all") {
+    query = "";
+  }
+  switch (parseInt(req.params.sort, 10)) {
+    case 1:
+      reviews_array = reviews_array.sort(function(a, b) {
+        return dateToDays(b.date)-dateToDays(a.date);
+      })
+      break;
+    case 2:
+      console.log(2)
+      reviews_array = reviews_array.sort(function(a, b) {
+        return dateToDays(a.date)-dateToDays(b.date);
+      })
+      break;
+    case 3:
+      reviews_array = reviews_array.sort(function(a, b) {
+        return b.score-a.score;
+      })
+      break;
+    case 4:
+      reviews_array = reviews_array.sort(function(a, b) {
+        return a.score-b.score;
+      })
+      break;
+    case 5:
+      reviews_array = reviews_array.sort(function(a, b) {
+        return b.release_date.substring(0, 4)-a.release_date.substring(0, 4);
+      })
+      break;
+    case 6:
+      reviews_array = reviews_array.sort(function(a, b) {
+        return a.release_date.substring(0, 4)-b.release_date.substring(0, 4);
+      })
+      break;
+  }
   res.render("index", {
     reviews: reviews_array,
-    query: req.params.query.toLowerCase()
+    query: query,
+    sort: req.params.sort
   })
 })
 
