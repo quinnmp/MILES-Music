@@ -78,9 +78,10 @@ $(".timestamp-length-checkbox").on("input", function() {
 
 $(".timestamp").click(function() {
   if($(this).children().attr("class") === "play") {
-    let duration = parseInt($(this).text().substring(0, $(this).text().indexOf(":")), 10) * 60 + parseInt($(this).text().substring($(this).text().indexOf(":") + 1, $(this).text().length), 10)
+    let duration = parseInt($(this).text().substring(0, $(this).text().indexOf(":")), 10) * 60 + parseInt($(this).text().substring($(this).text().indexOf(":") + 1, $(this).text().length), 10);
+    let track_number = $(this).attr("id").substring(1, $(this).attr("id").length) - 1;
     player.loadVideoById({
-      videoId:`${playlist[$(this).attr("id").substring(1, $(this).attr("id").length) - 1]}`,
+      videoId:`${playlist[track_number]}`,
       startSeconds:duration,
       endSeconds:duration + parseInt($(this).attr("class").substring($(this).attr("class").indexOf("timestamp") + 10, $(this).attr("class").length), 10)
     });
@@ -115,23 +116,24 @@ $(".fix-review-button").click(function() {
   review = review.replaceAll("&nbsp;", "");
   review = review.replaceAll("</span>", "");
   review = review.replaceAll("<p>", "");
-  review = review.replaceAll("</p>", "\\n");
   review = review.replaceAll("<br>", "");
+  review = review.replaceAll("</p>", "<br>");
   review = review.replaceAll("&amp;", "&");
   review = review.replaceAll("<em style=\"background-color: transparent; color: rgb(0, 0, 0);\">", "<em>");
   review = review.replaceAll("<em style=\"background-color: transparent;\">", "<em>");
-  review = review.replaceAll("\"", "\\\"");
-  review = review.replaceAll("\n", "\\n");
+  // review = review.replaceAll("\"", "\\\"");
+  // review = review.replaceAll("\n", "\\n");
   review = review.substring(0, review.length - 4)
   preview = review.substring(0, 500);
   $(".preview-text").val(preview);
   let tracklist = JSON.parse($(".tracklist-text").val())
   for (var i = 0; i < tracklist.length; i++) {
-    if (review.includes("\\\"" + tracklist[i].replaceAll("\"", "\\\"") + "\\\"")) {
+    if (review.includes("\"" + tracklist[i] + "\"")) {
+      console.log("includes")
       $("input[name='linked_tracks']").val($("input[name='linked_tracks']").val() + (i + 1) + ", ");
       review = review.replace(
-        "\\\"" + tracklist[i].replaceAll("\"", "\\\"") + "\\\"",
-        `<a href=\\"#${i + 1}\\" class=\\"review-link\\">\\"${tracklist[i].replaceAll("\"", "\\\"")}\\"<span class=\\"badge no-underline\\" id=\\"${i + 1}-review\\"\\>${i + 1}</span></a>`
+        "\"" + tracklist[i] + "\"",
+        `<a href=\"#${i + 1}\" class=\"review-link\">\"${tracklist[i].replaceAll("\"", "\\\"")}\"<span class=\"badge no-underline\" id=\"${i + 1}-review\">${i + 1}</span></a>`
       )
     }
   }
@@ -145,8 +147,9 @@ $(".fix-review-button").click(function() {
       last_track_index++;
     }
     track_position = (timestamp_review_array[i - last_track_index].lastIndexOf("a href="));
-    track_number = timestamp_review_array[i - last_track_index].substring(track_position + 10, timestamp_review_array[i - last_track_index].indexOf("\\", track_position + 10));
-    review = review.replace("{" + timestamp_review_array[i], `<span id=\\"*${track_number}\\" class=\\"badge timestamp ${timestamp_review_array[i].substring(timestamp_review_array[i].indexOf("&") + 1, timestamp_review_array[i].indexOf("}"))}\\"><span class=\\"play\\"></span>${timestamp_review_array[i].substring(0, timestamp_review_array[i].indexOf("&"))}</span>` + timestamp_review_array[i].substring(timestamp_review_array[i].indexOf("}") + 1, timestamp_review_array[i].length));
+    track_number = timestamp_review_array[i - last_track_index].substring(track_position + 9, timestamp_review_array[i - last_track_index].indexOf("\"", track_position + 10));
+    console.log(track_number)
+    review = review.replace("{" + timestamp_review_array[i], `<span id=\"*${track_number}\" class=\"badge timestamp ${timestamp_review_array[i].substring(timestamp_review_array[i].indexOf("&") + 1, timestamp_review_array[i].indexOf("}"))}\"><span class=\"play\"></span>${timestamp_review_array[i].substring(0, timestamp_review_array[i].indexOf("&"))}</span>` + timestamp_review_array[i].substring(timestamp_review_array[i].indexOf("}") + 1, timestamp_review_array[i].length));
   }
   $(".review-text").val(review);
 })

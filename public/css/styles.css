@@ -244,7 +244,7 @@ html {
   font-size: 20px;
 }
 
-.track:link, .track:visited, .track {
+.track:link, .track:visited {
   color: rgb(107, 79, 79);
   text-decoration: underline;
   inline-size: 75%;
