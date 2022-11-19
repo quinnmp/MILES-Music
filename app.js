@@ -97,7 +97,7 @@ app.post("/compose", function(req, res) {
     date: req.body.review_date,
     release_date: req.body.release_year,
     preview: req.body.preview_text,
-    playlist: req.body.playlis_id
+    playlist: req.body.playlist_id
   })
 
   review.save();
@@ -135,14 +135,18 @@ app.get("/search/:query/:sort", function(req, res) {
   if (query === ":all") {
     query = "";
   }
-  switch (parseInt(req.params.sort, 10)) {
+  let sort = req.params.sort.toLowerCase();
+  if(sort === "sort by:"){
+    sort = 1;
+  }
+  console.log(sort);
+  switch (parseInt(sort, 10)) {
     case 1:
       reviews_array = reviews_array.sort(function(a, b) {
         return dateToDays(b.date)-dateToDays(a.date);
       })
       break;
     case 2:
-      console.log(2)
       reviews_array = reviews_array.sort(function(a, b) {
         return dateToDays(a.date)-dateToDays(b.date);
       })
@@ -171,7 +175,7 @@ app.get("/search/:query/:sort", function(req, res) {
   res.render("index", {
     reviews: reviews_array,
     query: query,
-    sort: req.params.sort
+    sort: sort
   })
 })
 
